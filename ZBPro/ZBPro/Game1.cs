@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Text;
 using System;
 
 namespace ZBPro
@@ -20,24 +21,18 @@ namespace ZBPro
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             Window.AllowUserResizing = true;
-            position = new Vector2(0, 0);
+            
         }
 
 
         //Long-running initializations that typically last longer
         protected override void Initialize()
         {
-            texture = new Texture2D(this.GraphicsDevice, 100, 100);
-            Color[] colorData = new Color[100 * 100];
-            for (int i = 0; i < 10000; i ++)
-            {
-                colorData[i] = Color.White;
-            }
-
-            texture.SetData<Color>(colorData);
-
+            texture = new Texture2D(this.GraphicsDevice, 25, 25);
 
             base.Initialize();
+
+            position = new Vector2(graphics.GraphicsDevice.Viewport.Width / 2, graphics.GraphicsDevice.Viewport.Height / 2);
         }
 
 
@@ -46,6 +41,12 @@ namespace ZBPro
         {
             this.Window.Title = "Active Application";
             base.OnActivated(sender, args);
+
+            //just a goofy lil thing i made to resize the window when its in focus to see how it interacts
+            //with the rock
+            graphics.PreferredBackBufferWidth = 1900;
+            graphics.PreferredBackBufferHeight = 900;
+            graphics.ApplyChanges();
         }
 
 
@@ -67,19 +68,47 @@ namespace ZBPro
             
         }
 
+        protected override void UnloadContent()
+        {
+            Content.Unload();
+            base.UnloadContent();
+
+        }
+
+
 
         //Runs at a speed defined by gameTime, which is the time since the last frame call
         protected override void Update(GameTime gameTime)
         {
+            //create new keyboardstate object that holds the state of the entire keyboard
+            KeyboardState state = Keyboard.GetState();
+
+
+            //if they hit esc, exit the program
             if (IsActive)
             {
-                if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                if (state.IsKeyDown(Keys.Escape))
                     Exit();
             }
-            position.X += 200.0f * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (position.X > this.GraphicsDevice.Viewport.Width)
-                position.X = 0;
+
+            System.Text.StringBuilder sb = new StringBuilder();
+            foreach (var key in state.GetPressedKeys())
+                sb.Append(key);
+
+            if (sb.Length > 0)
+                System.Diagnostics.Debug.WriteLine(sb.ToString());
+
+
+            if (state.IsKeyDown(Keys.Right))
+                position.X += 5;
+            if (state.IsKeyDown(Keys.Left))
+                position.X -= 5;
+            if (state.IsKeyDown(Keys.Up))
+                position.Y -= 5;
+            if (state.IsKeyDown(Keys.Down))
+                position.Y += 5;
+            
 
             base.Update(gameTime);
             
