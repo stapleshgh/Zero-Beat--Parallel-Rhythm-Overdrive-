@@ -12,6 +12,7 @@ namespace ZBPro
         private GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Vector2 position;
+        KeyboardState prevState;
 
 
         //Constructor, mostly used to make valid objects for use later in the program
@@ -33,6 +34,7 @@ namespace ZBPro
             base.Initialize();
 
             position = new Vector2(graphics.GraphicsDevice.Viewport.Width / 2, graphics.GraphicsDevice.Viewport.Height / 2);
+            prevState = Keyboard.GetState();
         }
 
 
@@ -82,6 +84,7 @@ namespace ZBPro
         {
             //create new keyboardstate object that holds the state of the entire keyboard
             KeyboardState state = Keyboard.GetState();
+            
 
 
             //if they hit esc, exit the program
@@ -100,17 +103,19 @@ namespace ZBPro
                 System.Diagnostics.Debug.WriteLine(sb.ToString());
 
 
-            if (state.IsKeyDown(Keys.Right))
+            if (state.IsKeyDown(Keys.D) & !prevState.IsKeyDown(Keys.D))
                 position.X += 5;
-            if (state.IsKeyDown(Keys.Left))
+            if (state.IsKeyDown(Keys.A) & !prevState.IsKeyDown(Keys.A))
                 position.X -= 5;
-            if (state.IsKeyDown(Keys.Up))
+            if (state.IsKeyDown(Keys.W) & !prevState.IsKeyDown(Keys.W))
                 position.Y -= 5;
-            if (state.IsKeyDown(Keys.Down))
+            if (state.IsKeyDown(Keys.S) & !prevState.IsKeyDown(Keys.S))
                 position.Y += 5;
             
 
             base.Update(gameTime);
+
+            prevState = state;
             
         }
 
