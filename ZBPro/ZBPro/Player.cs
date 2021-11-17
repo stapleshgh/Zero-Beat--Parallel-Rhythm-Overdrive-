@@ -9,5 +9,9 @@ namespace ZBPro
 {
     class Player
     {
+        private static void Movement()
+        {
+
+        }
     }
 }

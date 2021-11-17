@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Text;
 using System;
+using static ZBPro.LevelManager;
 
 namespace ZBPro
 {
@@ -13,7 +14,8 @@ namespace ZBPro
         SpriteBatch spriteBatch;
         Vector2 position;
         KeyboardState prevState;
-
+        
+        
 
         //Constructor, mostly used to make valid objects for use later in the program
         public Game1()
@@ -21,7 +23,11 @@ namespace ZBPro
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            Window.AllowUserResizing = true;
+            Window.AllowUserResizing = false;
+            graphics.IsFullScreen = true;
+            graphics.PreferredBackBufferWidth = 1920;
+            graphics.PreferredBackBufferHeight = 1080;
+            graphics.ApplyChanges();
             
         }
 
@@ -33,7 +39,7 @@ namespace ZBPro
 
             base.Initialize();
 
-            position = new Vector2(graphics.GraphicsDevice.Viewport.Width / 2, graphics.GraphicsDevice.Viewport.Height / 2);
+            position = new Vector2(15, 0);
             prevState = Keyboard.GetState();
         }
 
@@ -44,11 +50,7 @@ namespace ZBPro
             this.Window.Title = "Active Application";
             base.OnActivated(sender, args);
 
-            //just a goofy lil thing i made to resize the window when its in focus to see how it interacts
-            //with the rock
-            graphics.PreferredBackBufferWidth = 1900;
-            graphics.PreferredBackBufferHeight = 900;
-            graphics.ApplyChanges();
+            
         }
 
 
@@ -65,7 +67,7 @@ namespace ZBPro
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            texture = Content.Load<Texture2D>("background");
+            texture = Content.Load<Texture2D>("sprites/splashtext");
 
             
         }
@@ -104,13 +106,13 @@ namespace ZBPro
 
 
             if (state.IsKeyDown(Keys.D) & !prevState.IsKeyDown(Keys.D))
-                position.X += 5;
+                position.X += 50;
             if (state.IsKeyDown(Keys.A) & !prevState.IsKeyDown(Keys.A))
-                position.X -= 5;
+                position.X -= 50;
             if (state.IsKeyDown(Keys.W) & !prevState.IsKeyDown(Keys.W))
-                position.Y -= 5;
+                position.Y -= 50;
             if (state.IsKeyDown(Keys.S) & !prevState.IsKeyDown(Keys.S))
-                position.Y += 5;
+                position.Y += 50;
             
 
             base.Update(gameTime);

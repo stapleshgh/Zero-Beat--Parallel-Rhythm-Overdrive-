@@ -78,7 +78,6 @@ C:\Users\James\Source\Repos\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\ob
 C:\Users\James\Source\Repos\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\obj\Debug\netcoreapp3.1\ZBPro.genruntimeconfig.cache
 C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\background.xnb
 C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\ball.xnb
-C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\WIN_20210802_14_48_38_Pro.xnb
 C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\ZBPro.exe
 C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\ZBPro.deps.json
 C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\ZBPro.runtimeconfig.json
@@ -154,3 +153,4 @@ C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPr
 C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\obj\Debug\netcoreapp3.1\ZBPro.dll
 C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\obj\Debug\netcoreapp3.1\ZBPro.pdb
 C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\obj\Debug\netcoreapp3.1\ZBPro.genruntimeconfig.cache
+C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\splashtext.xnb
