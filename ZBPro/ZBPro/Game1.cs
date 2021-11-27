@@ -4,6 +4,8 @@ using Microsoft.Xna.Framework.Input;
 using System.Text;
 using System;
 using static ZBPro.LevelManager;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace ZBPro
 {
@@ -14,8 +16,11 @@ namespace ZBPro
         SpriteBatch spriteBatch;
         Vector2 position;
         KeyboardState prevState;
-        
-        
+        private Color _backgroundColour;
+        private List<Component> _gameComponents;
+
+
+
 
         //Constructor, mostly used to make valid objects for use later in the program
         public Game1()
@@ -36,6 +41,8 @@ namespace ZBPro
         protected override void Initialize()
         {
             texture = new Texture2D(this.GraphicsDevice, 25, 25);
+            IsMouseVisible = true;
+            _gameComponents = new List<Component>();
 
             base.Initialize();
 
@@ -69,7 +76,33 @@ namespace ZBPro
 
             texture = Content.Load<Texture2D>("sprites/splashtext");
 
-            
+            var randomButton = new Button(Content.Load<Texture2D>("Sprites/button"), Content.Load<SpriteFont>("Fonts/Font"))
+            {
+                Position = new Vector2(350, 200),
+                Text = "Random",
+            };
+
+            randomButton.Click += RandomButton_Click;
+
+            var quitButton = new Button(Content.Load<Texture2D>("Sprites/button"), Content.Load<SpriteFont>("Fonts/Font"))
+            {
+                Position = new Vector2(350, 200),
+                Text = "Quit",
+            };
+
+            quitButton.Click += quitButton_Click;
+
+
+        }
+
+        private void quitButton_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void RandomButton_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         protected override void UnloadContent()
@@ -95,14 +128,6 @@ namespace ZBPro
                 if (state.IsKeyDown(Keys.Escape))
                     Exit();
             }
-
-
-            System.Text.StringBuilder sb = new StringBuilder();
-            foreach (var key in state.GetPressedKeys())
-                sb.Append(key);
-
-            if (sb.Length > 0)
-                System.Diagnostics.Debug.WriteLine(sb.ToString());
 
 
             if (state.IsKeyDown(Keys.D) & !prevState.IsKeyDown(Keys.D))
