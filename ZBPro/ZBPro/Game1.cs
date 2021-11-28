@@ -11,7 +11,6 @@ namespace ZBPro
 {
     public class Game1 : Game
     {
-        Texture2D texture;
         private GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Vector2 position;
@@ -40,7 +39,6 @@ namespace ZBPro
         //Long-running initializations that typically last longer
         protected override void Initialize()
         {
-            texture = new Texture2D(this.GraphicsDevice, 25, 25);
             IsMouseVisible = true;
             _gameComponents = new List<Component>();
 
@@ -74,33 +72,41 @@ namespace ZBPro
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            texture = Content.Load<Texture2D>("sprites/splashtext");
 
-            var randomButton = new Button(Content.Load<Texture2D>("Sprites/button"), Content.Load<SpriteFont>("Fonts/Font"))
+
+            var startButton = new Button(Content.Load<Texture2D>("Sprites/button"), Content.Load<SpriteFont>("Fonts/Font"))
             {
-                Position = new Vector2(350, 200),
-                Text = "Random",
+                Position = new Vector2(250, graphics.PreferredBackBufferHeight / 2),
+                Text = "Start",
             };
 
-            randomButton.Click += RandomButton_Click;
+
+            startButton.Click += startButton_Click;
 
             var quitButton = new Button(Content.Load<Texture2D>("Sprites/button"), Content.Load<SpriteFont>("Fonts/Font"))
             {
-                Position = new Vector2(350, 200),
+                Position = new Vector2(500, (graphics.PreferredBackBufferHeight / 2)),
                 Text = "Quit",
             };
 
             quitButton.Click += quitButton_Click;
+
+            _gameComponents = new List<Component>()
+            {
+                startButton,
+                quitButton,
+            };
 
 
         }
 
         private void quitButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (IsActive)
+                Exit();
         }
 
-        private void RandomButton_Click(object sender, EventArgs e)
+        private void startButton_Click(object sender, EventArgs e)
         {
             throw new NotImplementedException();
         }
@@ -123,11 +129,7 @@ namespace ZBPro
 
 
             //if they hit esc, exit the program
-            if (IsActive)
-            {
-                if (state.IsKeyDown(Keys.Escape))
-                    Exit();
-            }
+            
 
 
             if (state.IsKeyDown(Keys.D) & !prevState.IsKeyDown(Keys.D))
@@ -138,6 +140,9 @@ namespace ZBPro
                 position.Y -= 50;
             if (state.IsKeyDown(Keys.S) & !prevState.IsKeyDown(Keys.S))
                 position.Y += 50;
+
+            foreach (var component in _gameComponents)
+                component.Update(gameTime);
             
 
             base.Update(gameTime);
@@ -154,7 +159,8 @@ namespace ZBPro
 
 
             spriteBatch.Begin();
-            spriteBatch.Draw(texture, position, Color.White);
+            foreach (var component in _gameComponents)
+                component.Draw(gameTime, spriteBatch);
             spriteBatch.End();
 
             
