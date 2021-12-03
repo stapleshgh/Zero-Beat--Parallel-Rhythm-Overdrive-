@@ -17,7 +17,7 @@ namespace ZBPro
         KeyboardState prevState;
         private Color _backgroundColour;
         private List<Component> _gameComponents;
-
+        
 
 
 
@@ -44,7 +44,6 @@ namespace ZBPro
 
             base.Initialize();
 
-            position = new Vector2(15, 0);
             prevState = Keyboard.GetState();
         }
 
@@ -70,46 +69,11 @@ namespace ZBPro
         //Loads all game content, like assets and music and such
         protected override void LoadContent()
         {
+
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-
-
-            var startButton = new Button(Content.Load<Texture2D>("Sprites/button"), Content.Load<SpriteFont>("Fonts/Font"))
-            {
-                Position = new Vector2(250, graphics.PreferredBackBufferHeight / 2),
-                Text = "Start",
-            };
-
-
-            startButton.Click += startButton_Click;
-
-            var quitButton = new Button(Content.Load<Texture2D>("Sprites/button"), Content.Load<SpriteFont>("Fonts/Font"))
-            {
-                Position = new Vector2(500, (graphics.PreferredBackBufferHeight / 2)),
-                Text = "Quit",
-            };
-
-            quitButton.Click += quitButton_Click;
-
-            _gameComponents = new List<Component>()
-            {
-                startButton,
-                quitButton,
-            };
-
-
         }
 
-        private void quitButton_Click(object sender, EventArgs e)
-        {
-            if (IsActive)
-                Exit();
-        }
-
-        private void startButton_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
 
         protected override void UnloadContent()
         {
@@ -126,20 +90,6 @@ namespace ZBPro
             //create new keyboardstate object that holds the state of the entire keyboard
             KeyboardState state = Keyboard.GetState();
             
-
-
-            //if they hit esc, exit the program
-            
-
-
-            if (state.IsKeyDown(Keys.D) & !prevState.IsKeyDown(Keys.D))
-                position.X += 50;
-            if (state.IsKeyDown(Keys.A) & !prevState.IsKeyDown(Keys.A))
-                position.X -= 50;
-            if (state.IsKeyDown(Keys.W) & !prevState.IsKeyDown(Keys.W))
-                position.Y -= 50;
-            if (state.IsKeyDown(Keys.S) & !prevState.IsKeyDown(Keys.S))
-                position.Y += 50;
 
             foreach (var component in _gameComponents)
                 component.Update(gameTime);
