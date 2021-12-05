@@ -9,7 +9,7 @@ namespace ZBPro.States
 {
     public class GameState : State
     {
-        public GameState(ContentManager content, Game1 game, GraphicsDevice graphicsDevice, SpriteBatch spriteBatch) : base(game, graphicsDevice, content)
+        public GameState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice, content)
         {
 
         }
@@ -17,17 +17,17 @@ namespace ZBPro.States
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            throw new NotImplementedException();
+            
         }
 
         public override void PostUpdate(GameTime gameTime)
         {
-            throw new NotImplementedException();
+            
         }
 
         public override void Update(GameTime gameTime)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

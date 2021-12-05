@@ -6,6 +6,7 @@ using System;
 using static ZBPro.LevelManager;
 using System.Linq;
 using System.Collections.Generic;
+using ZBPro.States;
 
 namespace ZBPro
 {
@@ -17,13 +18,23 @@ namespace ZBPro
         KeyboardState prevState;
         private Color _backgroundColour;
         private List<Component> _gameComponents;
-        
+
+        private State _currentState;
+
+        private State _nextState;
+
+        public void ChangeState(State state)
+        {
+            _nextState = state;
+        }
+
 
 
 
         //Constructor, mostly used to make valid objects for use later in the program
         public Game1()
         {
+
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
@@ -72,6 +83,8 @@ namespace ZBPro
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            _currentState = new MenuState(Content, this, graphics.GraphicsDevice);
+
         }
 
 
@@ -87,17 +100,15 @@ namespace ZBPro
         //Runs at a speed defined by gameTime, which is the time since the last frame call
         protected override void Update(GameTime gameTime)
         {
-            //create new keyboardstate object that holds the state of the entire keyboard
-            KeyboardState state = Keyboard.GetState();
-            
+            if (_nextState != null)
+            {
+                _currentState = _nextState;
+                _nextState = null;
+            }
 
-            foreach (var component in _gameComponents)
-                component.Update(gameTime);
-            
+            _currentState.Update(gameTime);
 
-            base.Update(gameTime);
-
-            prevState = state;
+            _currentState.PostUpdate(gameTime);
             
         }
 
@@ -108,10 +119,7 @@ namespace ZBPro
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
 
-            spriteBatch.Begin();
-            foreach (var component in _gameComponents)
-                component.Draw(gameTime, spriteBatch);
-            spriteBatch.End();
+            _currentState.Draw(gameTime, spriteBatch);
 
             
 

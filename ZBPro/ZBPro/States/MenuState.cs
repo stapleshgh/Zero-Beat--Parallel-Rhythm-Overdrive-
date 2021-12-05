@@ -12,7 +12,7 @@ namespace ZBPro.States
         private List<Component> _components;
         private object startButton_Click;
 
-        public MenuState(ContentManager content, Game1 game, GraphicsDevice graphicsDevice, GameTime gameTime) : base(game, graphicsDevice, content)
+        public MenuState(ContentManager content, Game1 game, GraphicsDevice graphicsDevice) : base(game, graphicsDevice, content)
         {
             var buttonTexture = content.Load<Texture2D>("Sprites/button");
             var buttonFont = content.Load<SpriteFont>("Fonts/Font");
@@ -30,7 +30,7 @@ namespace ZBPro.States
 
             var quitButton = new Button(buttonTexture, buttonFont)
             {
-                Position = new Vector2(960, 540),
+                Position = new Vector2(960, 440),
                 Text = "Exit"
             };
 
@@ -51,30 +51,43 @@ namespace ZBPro.States
 
         }
 
-        private void StartButton_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void quitButton_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            throw new NotImplementedException();
+            spriteBatch.Begin();
+
+            foreach (var component in _components)
+                component.Draw(gameTime, spriteBatch);
+
+            spriteBatch.End();
         }
+
+
 
         public override void PostUpdate(GameTime gameTime)
         {
-            throw new NotImplementedException();
+            // Remove sprites if they aren't needed
         }
+
+
+        private void quitButton_Click(object sender, EventArgs e)
+        {
+            _game.Exit();
+        }
+
+
+        private void StartButton_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Start Game");
+        }
+
+
 
         public override void Update(GameTime gameTime)
         {
-            throw new NotImplementedException();
+            foreach (var component in _components)
+                component.Update(gameTime);
+
         }
     }
 }
