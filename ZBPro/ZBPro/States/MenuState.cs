@@ -24,33 +24,51 @@ namespace ZBPro.States
             var startButton = new Button(buttonTexture, buttonFont)
             {
                 //Defining position and text
-                Position = new Vector2(960, 540),
+                Position = new Vector2(_graphics.Viewport.Width / 2, (_graphics.Viewport.Height / 2) + 100),
                 Text = "Start"
             };
 
+            //Adding the click methods to the click event handler
+            startButton.Click += StartButton_Click;
+            
+
+            var testButton = new Button(buttonTexture, buttonFont)
+            {
+                //button for testing play interface
+                Position = new Vector2(_graphics.Viewport.Width / 2, _graphics.Viewport.Height / 2),
+                Text = "Test Level"
+            };
+            testButton.Click += testButton_Click;
+
             var quitButton = new Button(buttonTexture, buttonFont)
             {
-                Position = new Vector2(960, 440),
+                Position = new Vector2(_graphics.Viewport.Width / 2, (_graphics.Viewport.Height / 2) + 200),
                 Text = "Exit"
             };
+
+            quitButton.Click += quitButton_Click;
+            
 
             #endregion
 
 
-            //Adding the click methods to the click event handler
-            startButton.Click += StartButton_Click;
-            quitButton.Click += quitButton_Click;
+
 
 
             //Components list for rendering and updating
             _components = new List<Component>()
             {
                 startButton,
-                quitButton
+                quitButton,
+                testButton
             };
 
         }
 
+        private void testButton_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Test");
+        }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
@@ -72,13 +90,14 @@ namespace ZBPro.States
 
         private void quitButton_Click(object sender, EventArgs e)
         {
+
             _game.Exit();
         }
 
 
         private void StartButton_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Start Game");
+            _game.ChangeState(new MapSelectState(_content, _game, _graphics));
         }
 
 
@@ -89,5 +108,7 @@ namespace ZBPro.States
                 component.Update(gameTime);
 
         }
+
+
     }
 }

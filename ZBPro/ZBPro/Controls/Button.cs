@@ -68,12 +68,13 @@ namespace ZBPro
             if (mouseRectangle.Intersects(Rect))
             {
                 _isHovering = true;
+                if (_currentMouse.LeftButton == ButtonState.Released && _prevMouse.LeftButton == ButtonState.Pressed)
+                {
+                    Click?.Invoke(this, new EventArgs());
+                }
             }
 
-            if (_currentMouse.LeftButton == ButtonState.Released && _prevMouse.LeftButton == ButtonState.Pressed)
-            {
-                Click?.Invoke(this, new EventArgs());
-            }
+            
 
             
         }

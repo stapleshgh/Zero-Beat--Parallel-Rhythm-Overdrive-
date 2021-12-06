@@ -21,6 +21,6 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controls\" />
+    <Folder Include="Content\Charts\" />
   </ItemGroup>
 </Project>

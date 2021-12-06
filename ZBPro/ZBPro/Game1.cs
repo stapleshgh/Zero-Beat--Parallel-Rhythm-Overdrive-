@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Text;
 using System;
-using static ZBPro.LevelManager;
 using System.Linq;
 using System.Collections.Generic;
 using ZBPro.States;
@@ -39,7 +38,7 @@ namespace ZBPro
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             Window.AllowUserResizing = false;
-            graphics.IsFullScreen = true;
+            //graphics.IsFullScreen = true;
             graphics.PreferredBackBufferWidth = 1920;
             graphics.PreferredBackBufferHeight = 1080;
             graphics.ApplyChanges();
