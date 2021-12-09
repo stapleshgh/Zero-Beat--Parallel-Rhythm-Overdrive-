@@ -22,7 +22,8 @@ namespace ZBPro.States
             _bg = bg;
 
             _components = new List<Component>()
-            { _bg
+            {
+                _bg
             };
         }
 
@@ -40,7 +41,8 @@ namespace ZBPro.States
 
         public override void Update(GameTime gameTime)
         {
-            
+            foreach (var component in _components)
+                component.Update(gameTime);
         }
     }
 }
