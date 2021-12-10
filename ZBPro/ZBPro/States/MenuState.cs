@@ -81,7 +81,9 @@ namespace ZBPro.States
 
         private void testButton_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Test");
+            GameState testLevel = new GameState(_game, _graphics, _content);
+            _game.ChangeState(testLevel);
+            
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)

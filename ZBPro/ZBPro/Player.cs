@@ -8,10 +8,14 @@ using Microsoft.Xna.Framework.Input;
 namespace ZBPro
 {
     
-    class Player : Component
+    public class Player : Component
     {
         #region Fields
         private Texture2D _texture;
+        private int increment;
+        private KeyboardState state;
+        private KeyboardState prevState;
+        private Vector2 position;
         #endregion
 
         #region Properties
@@ -19,28 +23,40 @@ namespace ZBPro
         #endregion
 
 
-
-        private static void Movement(KeyboardState state, KeyboardState prevState, int increment, Vector2 position)
+        public Player(Texture2D texture, int _increment, Vector2 startPos)
         {
+            _texture = texture;
+            position = startPos;
+            increment = _increment;
 
-            if (state.IsKeyDown(Keys.D) & !prevState.IsKeyDown(Keys.D))
-                position.X += increment;
-            if (state.IsKeyDown(Keys.A) & !prevState.IsKeyDown(Keys.A))
-                position.X -= increment;
-            if (state.IsKeyDown(Keys.W) & !prevState.IsKeyDown(Keys.W))
-                position.Y -= increment;
-            if (state.IsKeyDown(Keys.S) & !prevState.IsKeyDown(Keys.S))
-                position.Y += increment;
+            
+            
         }
+
+
+
+        
 
         public override void Update(GameTime gameTime)
         {
+            state = Keyboard.GetState();
             
+            if (state.IsKeyDown(Keys.D))
+                position.X += increment * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (state.IsKeyDown(Keys.A))
+                position.X -= increment * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (state.IsKeyDown(Keys.W))
+                position.Y -= increment * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (state.IsKeyDown(Keys.S))
+                position.Y += increment * (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            prevState = state;
+
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            throw new NotImplementedException();
+            spriteBatch.Draw(_texture, position, Color.White);
         }
     }
 }

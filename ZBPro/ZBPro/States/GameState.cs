@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,6 +11,11 @@ namespace ZBPro.States
 {
     public class GameState : State
     {
+        private Texture2D field;
+        private Texture2D bullet;
+        private Texture2D playerTexture;
+        public Player _player;
+
         private List<Component> _components;
 
         #region Properties
@@ -17,21 +23,28 @@ namespace ZBPro.States
         #endregion
 
 
-        public GameState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content, Image bg) : base(game, graphicsDevice, content)
+        public GameState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice, content)
         {
-            _bg = bg;
+            playerTexture = content.Load<Texture2D>("Sprites/player");
+            Player _player = new Player(playerTexture, 500, new Vector2(0, 0));
+
+            
 
             _components = new List<Component>()
             {
-                _bg
+                _player
+                
             };
         }
 
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
+            spriteBatch.Begin();
             foreach (var component in _components)
                 component.Draw(gameTime, spriteBatch);
+
+            spriteBatch.End();
         }
 
         public override void PostUpdate(GameTime gameTime)
