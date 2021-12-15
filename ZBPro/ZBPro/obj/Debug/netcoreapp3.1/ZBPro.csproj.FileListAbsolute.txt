@@ -161,3 +161,7 @@ C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPr
 C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\bullet1.xnb
 C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\field.xnb
 C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\player.xnb
+C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\sky.xnb
+C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\continue_button.xnb
+C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\menu_button.xnb
+C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\paused_text.xnb

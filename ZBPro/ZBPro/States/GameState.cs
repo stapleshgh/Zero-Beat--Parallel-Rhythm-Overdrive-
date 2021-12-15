@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,23 +12,31 @@ namespace ZBPro.States
 {
     public class GameState : State
     {
+        #region Fields
+        private Texture2D pausedTexture;
         private Texture2D field;
         private Texture2D bullet;
         private Texture2D playerTexture;
+        private Texture2D bgTexture; 
         public Player _player;
+        private KeyboardState state;
+        private KeyboardState prevState;
+        private bool isPaused;
+        private Image _bg;
+        public Image paused;
+        #endregion
 
         private List<Component> _components;
-
-        #region Properties
-        private Image _bg;
-        #endregion
 
 
         public GameState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice, content)
         {
+            isPaused = false;
             playerTexture = content.Load<Texture2D>("Sprites/player");
+            bgTexture = content.Load<Texture2D>("Sprites/sky");
+            pausedTexture = content.Load<Texture2D>("Sprites/paused_text");
             Player _player = new Player(playerTexture, 500, new Vector2(0, 0));
-
+            paused = new Image(pausedTexture, new Vector2(0, 0));
             
 
             _components = new List<Component>()
@@ -40,9 +49,14 @@ namespace ZBPro.States
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
+            if (isPaused)
+                _components.Add(paused);
+
             spriteBatch.Begin();
+
             foreach (var component in _components)
                 component.Draw(gameTime, spriteBatch);
+            
 
             spriteBatch.End();
         }
@@ -54,8 +68,19 @@ namespace ZBPro.States
 
         public override void Update(GameTime gameTime)
         {
+            state = Keyboard.GetState();
+
+            if (isPaused == false && prevState.IsKeyDown(Keys.Escape) == false)
+                if (state.IsKeyDown(Keys.Escape))
+                    isPaused = true;
+
+            if (isPaused == true)
+                MediaPlayer.Pause();
+
             foreach (var component in _components)
                 component.Update(gameTime);
+
+            prevState = state;
         }
     }
 }
