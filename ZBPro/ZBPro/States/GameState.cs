@@ -36,7 +36,7 @@ namespace ZBPro.States
             bgTexture = content.Load<Texture2D>("Sprites/sky");
             pausedTexture = content.Load<Texture2D>("Sprites/paused_text");
             Player _player = new Player(playerTexture, 500, new Vector2(0, 0));
-            paused = new Image(pausedTexture, new Vector2(0, 0));
+            paused = new Image(pausedTexture, new Vector2(0, 0), 0.75f);
             
 
             _components = new List<Component>()
@@ -49,8 +49,7 @@ namespace ZBPro.States
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            if (isPaused)
-                _components.Add(paused);
+            
 
             spriteBatch.Begin();
 
@@ -70,9 +69,18 @@ namespace ZBPro.States
         {
             state = Keyboard.GetState();
 
-            if (isPaused == false && prevState.IsKeyDown(Keys.Escape) == false)
+            if (isPaused == false)
+            {
                 if (state.IsKeyDown(Keys.Escape))
+                    _components.Add(paused);
                     isPaused = true;
+            }
+
+            if (isPaused == true)
+                if (state.IsKeyDown(Keys.Escape))
+                    _components.Remove(paused);
+                    isPaused = false;
+                    
 
             if (isPaused == true)
                 MediaPlayer.Pause();

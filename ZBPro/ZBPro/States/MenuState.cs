@@ -61,7 +61,7 @@ namespace ZBPro.States
 
             #region Images
             //creates images
-            var splashText = new Image(splash, new Vector2(_graphics.Viewport.Width / 2 - splash.Width / 2, -150));
+            var splashText = new Image(splash, new Vector2(_graphics.Viewport.Width / 2 - splash.Width / 2, -150), 1.0f);
 
             #endregion
 
