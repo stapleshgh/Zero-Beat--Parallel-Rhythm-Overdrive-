@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Fonts/Font.spritefont</SourceFile>
-  <SourceTime>2020-08-10T12:17:28-04:00</SourceTime>
+  <SourceTime>2021-12-17T12:02:16.231413-05:00</SourceTime>
   <DestFile>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/bin/Windows/Content/Fonts/Font.xnb</DestFile>
-  <DestTime>2021-12-06T09:40:11.8683634-05:00</DestTime>
+  <DestTime>2021-12-17T12:02:25.1628036-05:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2020-08-10T12:17:54-04:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

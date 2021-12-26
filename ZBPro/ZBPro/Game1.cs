@@ -9,16 +9,13 @@ using ZBPro.States;
 using Microsoft.Xna.Framework.Media;
 using ZBPro.Content;
 
+
 namespace ZBPro
 {
     public class Game1 : Game
     {
-
         private GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        KeyboardState state;
-        KeyboardState prevState;
-        private Color _backgroundColour;
         private List<Component> _gameComponents;
 
         private State _currentState;
@@ -101,7 +98,6 @@ namespace ZBPro
         //Runs at a speed defined by gameTime, which is the time since the last frame call
         protected override void Update(GameTime gameTime)
         {
-            state = Keyboard.GetState();
                     
 
             if (_nextState != null)
@@ -113,8 +109,6 @@ namespace ZBPro
             _currentState.Update(gameTime);
 
             _currentState.PostUpdate(gameTime);
-
-            prevState = state;
         }
 
 

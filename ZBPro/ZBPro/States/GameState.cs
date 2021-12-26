@@ -7,42 +7,55 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using ZBPro.Content;
+using ZBPro.Elements;
 
 namespace ZBPro.States
 {
     public class GameState : State
     {
         #region Fields
+        private double frameShift;
+        private bool pauseCheck;
         private Texture2D pausedTexture;
-        private Texture2D field;
-        private Texture2D bullet;
+        private Texture2D fieldTexture;
         private Texture2D playerTexture;
-        private Texture2D bgTexture; 
         public Player _player;
         private KeyboardState state;
         private KeyboardState prevState;
         private bool isPaused;
-        private Image _bg;
         public Image paused;
+        public Image field;
         #endregion
 
         private List<Component> _components;
+        private List<Note> _notes;
 
 
         public GameState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice, content)
         {
+            var scoreTexture = content.Load<Texture2D>("Sprites/DialogueBoxes/scoreBox");
+            var scoreFont = content.Load<SpriteFont>("Fonts/Font");
+            
+
             isPaused = false;
             playerTexture = content.Load<Texture2D>("Sprites/player");
-            bgTexture = content.Load<Texture2D>("Sprites/sky");
             pausedTexture = content.Load<Texture2D>("Sprites/paused_text");
-            Player _player = new Player(playerTexture, 500, new Vector2(0, 0));
+            fieldTexture = content.Load<Texture2D>("Sprites/field");
+            Player _player = new Player(playerTexture, 9000, new Vector2(fieldTexture.Width, 920));
             paused = new Image(pausedTexture, new Vector2(0, 0), 0.75f);
-            
+            field = new Image(fieldTexture, new Vector2(_graphics.Viewport.Width / 2 - fieldTexture.Width / 2 - playerTexture.Width / 2 + 10, _graphics.Viewport.Height / 2 - fieldTexture.Height / 2), 1.0f);
+
+            var score = new DialogueBox(scoreTexture, scoreFont, Color.Black)
+            {
+                Position = new Vector2(0, 0),
+                Text = "1000"
+            };
 
             _components = new List<Component>()
             {
-                _player
-                
+                field,
+                _player,
+                score
             };
         }
 
@@ -67,28 +80,26 @@ namespace ZBPro.States
 
         public override void Update(GameTime gameTime)
         {
+            
             state = Keyboard.GetState();
 
-            if (isPaused == false)
-            {
-                if (state.IsKeyDown(Keys.Escape))
-                    _components.Add(paused);
-                    isPaused = true;
-            }
+            #region pause check
 
-            if (isPaused == true)
-                if (state.IsKeyDown(Keys.Escape))
+            if (state.IsKeyDown(Keys.Escape) && !prevState.IsKeyDown(Keys.Escape) && _components.Contains(paused) == false)
+                _components.Add(paused);
+
+            if (_components.Contains(paused))
+                if (state.IsKeyDown(Keys.Escape) && !prevState.IsKeyDown(Keys.Escape))
                     _components.Remove(paused);
-                    isPaused = false;
-                    
 
-            if (isPaused == true)
-                MediaPlayer.Pause();
+
+            #endregion
 
             foreach (var component in _components)
-                component.Update(gameTime);
+                if (isPaused == false)
+                    component.Update(gameTime);
 
-            prevState = state;
+
         }
     }
 }

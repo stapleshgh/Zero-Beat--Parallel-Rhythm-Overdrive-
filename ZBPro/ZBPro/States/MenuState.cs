@@ -28,6 +28,8 @@ namespace ZBPro.States
                 Text = "Edit"
             };
 
+            editButton.Click += editButton_Click;
+
             var startButton = new Button(buttonTexture, buttonFont)
             {
                 //Defining position and text
@@ -77,6 +79,12 @@ namespace ZBPro.States
             };
 
 
+        }
+
+        private void editButton_Click(object sender, EventArgs e)
+        {
+            EditState edit = new EditState(_content, _game, _graphics);
+            _game.ChangeState(edit);
         }
 
         private void testButton_Click(object sender, EventArgs e)

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/button.png</SourceFile>
-  <SourceTime>2021-12-06T18:19:27.0833664-05:00</SourceTime>
-  <DestFile>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/bin/Windows/Content/Sprites/button.xnb</DestFile>
-  <DestTime>2021-12-23T21:55:37.6345437-05:00</DestTime>
+  <SourceFile>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/DialogueBoxes/scoreBox.png</SourceFile>
+  <SourceTime>2021-12-17T11:40:51.3881651-05:00</SourceTime>
+  <DestFile>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/bin/Windows/Content/Sprites/DialogueBoxes/scoreBox.xnb</DestFile>
+  <DestTime>2021-12-17T11:48:50.5150648-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T12:17:54-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

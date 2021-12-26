@@ -16,6 +16,7 @@ namespace ZBPro
         private KeyboardState state;
         private KeyboardState prevState;
         private Vector2 position;
+        private Rectangle _hitbox;
         #endregion
 
         #region Properties
@@ -28,6 +29,7 @@ namespace ZBPro
             _texture = texture;
             position = startPos;
             increment = _increment;
+            _hitbox = new Rectangle(new Point((int)position.X, _texture.Width), new Point((int)position.Y, _texture.Height));
 
             
             
@@ -41,13 +43,13 @@ namespace ZBPro
         {
             state = Keyboard.GetState();
             
-            if (state.IsKeyDown(Keys.D))
+            if (state.IsKeyDown(Keys.D) && prevState.IsKeyDown(Keys.D) == false)
                 position.X += increment * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (state.IsKeyDown(Keys.A))
+            if (state.IsKeyDown(Keys.A) && prevState.IsKeyDown(Keys.A) == false)
                 position.X -= increment * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (state.IsKeyDown(Keys.W))
+            if (state.IsKeyDown(Keys.W) && prevState.IsKeyDown(Keys.W) == false)
                 position.Y -= increment * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (state.IsKeyDown(Keys.S))
+            if (state.IsKeyDown(Keys.S) && prevState.IsKeyDown(Keys.S) == false)
                 position.Y += increment * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             prevState = state;
