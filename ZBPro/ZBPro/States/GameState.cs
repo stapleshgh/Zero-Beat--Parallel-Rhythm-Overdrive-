@@ -33,14 +33,14 @@ namespace ZBPro.States
 
         public GameState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice, content)
         {
-            var scoreTexture = content.Load<Texture2D>("Sprites/DialogueBoxes/scoreBox");
+            var scoreTexture = content.Load<Texture2D>("defaultSkin/DialogueBoxes/scoreBox");
             var scoreFont = content.Load<SpriteFont>("Fonts/Font");
             
 
             isPaused = false;
-            playerTexture = content.Load<Texture2D>("Sprites/player");
-            pausedTexture = content.Load<Texture2D>("Sprites/paused_text");
-            fieldTexture = content.Load<Texture2D>("Sprites/field");
+            playerTexture = content.Load<Texture2D>("defaultSkin/player");
+            pausedTexture = content.Load<Texture2D>("defaultSkin/paused_text");
+            fieldTexture = content.Load<Texture2D>("defaultSkin/field");
             Player _player = new Player(playerTexture, 9000, new Vector2(fieldTexture.Width, 920));
             paused = new Image(pausedTexture, new Vector2(0, 0), 0.75f);
             field = new Image(fieldTexture, new Vector2(_graphics.Viewport.Width / 2 - fieldTexture.Width / 2 - playerTexture.Width / 2 + 10, _graphics.Viewport.Height / 2 - fieldTexture.Height / 2), 1.0f);

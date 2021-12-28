@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using ZBPro.Content;
 using ZBPro.Elements;
 
 namespace ZBPro.States
@@ -20,6 +21,7 @@ namespace ZBPro.States
         private Texture2D NoteTexture;
         private KeyboardState prevState;
         private Button newNote;
+        private Image note;
 
         public EditState(ContentManager content, Game1 game, GraphicsDevice graphicsDevice) : base(game, graphicsDevice, content)
         {
@@ -46,8 +48,7 @@ namespace ZBPro.States
 
             void newNote_Click(object sender, EventArgs e)
             {
-                var note = new Note(new Vector2(currentMouse.X, currentMouse.Y));
-                _components.Add(note);
+                
                 isTracking = true;
             }
 
@@ -68,10 +69,9 @@ namespace ZBPro.States
         {
             state = Keyboard.GetState();
             currentMouse = Mouse.GetState();
+            
 
-            if (isTracking)
-                note.X = currentMouse.X;
-                note.Y = currentMouse.Y;
+            
 
             foreach (Component component in _components)
                 component.Update(gameTime);
