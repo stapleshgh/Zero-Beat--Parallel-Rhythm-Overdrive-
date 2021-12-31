@@ -4,7 +4,6 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/../../../../../../Desktop/button.png</File>
     <File>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/background.png</File>
     <File>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Fonts/Font.spritefont</File>
     <File>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/ball.png</File>
@@ -21,7 +20,6 @@
     <File>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/splashtext.png</File>
   </SourceFiles>
   <DestFiles>
-    <File>Sprites/button.png</File>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
