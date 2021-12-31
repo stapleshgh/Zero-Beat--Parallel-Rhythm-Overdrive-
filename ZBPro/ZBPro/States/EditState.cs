@@ -12,47 +12,37 @@ namespace ZBPro.States
 {
     class EditState : State 
     {
-        private MouseState currentMouse;
-        private MouseState prevMouse;
-        private bool isTracking;
-        private List<Component> _components;
-        private SpriteFont font;
-        private KeyboardState state;
-        private Texture2D NoteTexture;
-        private KeyboardState prevState;
-        private Button newNote;
-        private Image note;
+        List<Component> _components;
+        bool fileChosen;
+        Texture2D buttonTexture;
+        DialogueBox prompt;
+        Texture2D promptTexture;
+        SpriteFont font;
 
         public EditState(ContentManager content, Game1 game, GraphicsDevice graphicsDevice) : base(game, graphicsDevice, content)
         {
-            isTracking = false;
-            NoteTexture = content.Load<Texture2D>("sprites/noteTexture");
-            font = content.Load<SpriteFont>("Fonts/font");
+            buttonTexture = content.Load<Texture2D>("Sprites/button");
+            font = content.Load<SpriteFont>("Fonts/Font");
+            promptTexture = content.Load<Texture2D>("Sprites/DialogueBoxes/promptBox");
 
-
-            newNote = new Button(NoteTexture, font)
+            DialogueBox prompt = new DialogueBox(promptTexture, font, Color.White)
             {
-                Text = "New Note",
-                Position = new Vector2(1700, 900)
+                Text = "Choose a file, or Create new beatmap?",
+                Position = new Vector2(_graphics.Viewport.Width / 2 - promptTexture.Width / 2, _graphics.Viewport.Height / 2 - promptTexture.Height / 2)
+            };
+            Button createNewBeatmap = new Button(buttonTexture, font)
+            {
+                Text = "Create New",
+                Position = new Vector2(promptTexture.Width / 2 + buttonTexture.Width / 2, promptTexture.Height / 2)
             };
 
-            newNote.Click += newNote_Click;
 
+            //component list init
             _components = new List<Component>()
             {
-                newNote
+                prompt,
+                createNewBeatmap
             };
-
-
-            #region button methods
-
-            void newNote_Click(object sender, EventArgs e)
-            {
-                
-                isTracking = true;
-            }
-
-            #endregion
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
@@ -67,17 +57,17 @@ namespace ZBPro.States
 
         public override void Update(GameTime gameTime)
         {
-            state = Keyboard.GetState();
-            currentMouse = Mouse.GetState();
-            
-
-            
-
             foreach (Component component in _components)
                 component.Update(gameTime);
+            
+            if (fileChosen)
+            {
 
-            prevState = state;
-            prevMouse = currentMouse;
+            }
+            else
+            {
+
+            }
         }
 
         public override void PostUpdate(GameTime gameTime)

@@ -68,18 +68,6 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/button.png
 
-#begin Sprites/button.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Sprites/button.png
-
 #begin Sprites/continue_button.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -91,6 +79,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/continue_button.png
+
+#begin Sprites/DialogueBoxes/promptBox.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/DialogueBoxes/promptBox.png
 
 #begin Sprites/DialogueBoxes/scoreBox.png
 /importer:TextureImporter

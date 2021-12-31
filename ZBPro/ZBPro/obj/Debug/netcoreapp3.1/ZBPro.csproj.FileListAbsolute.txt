@@ -144,7 +144,6 @@ C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPr
 C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\runtimes\win7-arm\native\libuv.dll
 C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\runtimes\win7-x64\native\libuv.dll
 C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\runtimes\win7-x86\native\libuv.dll
-C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\obj\Debug\netcoreapp3.1\ZBPro.csprojAssemblyReference.cache
 C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\obj\Debug\netcoreapp3.1\ZBPro.AssemblyInfoInputs.cache
 C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\obj\Debug\netcoreapp3.1\ZBPro.AssemblyInfo.cs
 C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\obj\Debug\netcoreapp3.1\ZBPro.csproj.CoreCompileInputs.cache
@@ -167,3 +166,15 @@ C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPr
 C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\paused_text.xnb
 C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\DialogueBoxes\scoreBox.xnb
 C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\noteTexture.xnb
+C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\bullet1.xnb
+C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\continue_button.xnb
+C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\DialogueBoxes\scoreBox.xnb
+C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\field.xnb
+C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\menu_button.xnb
+C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\noteTexture.xnb
+C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\paused_text.xnb
+C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\player.xnb
+C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\sky.xnb
+C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\obj\Debug\netcoreapp3.1\ZBPro.csproj.AssemblyReference.cache
+C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\obj\Debug\netcoreapp3.1\ZBPro.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\DialogueBoxes\promptBox.xnb
