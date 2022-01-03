@@ -30,10 +30,17 @@ namespace ZBPro.States
                 Text = "Choose a file, or Create new beatmap?",
                 Position = new Vector2(_graphics.Viewport.Width / 2 - promptTexture.Width / 2, _graphics.Viewport.Height / 2 - promptTexture.Height / 2)
             };
+
             Button createNewBeatmap = new Button(buttonTexture, font)
             {
                 Text = "Create New",
-                Position = new Vector2(promptTexture.Width / 2 + buttonTexture.Width / 2, promptTexture.Height / 2)
+                Position = new Vector2(_graphics.Viewport.Width / 2 - buttonTexture.Width, _graphics.Viewport.Height / 2 + promptTexture.Height / 2)
+            };
+
+            Button chooseBeatmap = new Button(buttonTexture, font)
+            {
+                Text = "Choose Existing",
+                Position = new Vector2(_graphics.Viewport.Width / 2, _graphics.Viewport.Height / 2 + promptTexture.Height / 2)
             };
 
 
@@ -41,7 +48,8 @@ namespace ZBPro.States
             _components = new List<Component>()
             {
                 prompt,
-                createNewBeatmap
+                createNewBeatmap,
+                chooseBeatmap
             };
         }
 

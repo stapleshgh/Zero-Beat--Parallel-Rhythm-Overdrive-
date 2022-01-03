@@ -41,6 +41,7 @@ namespace ZBPro
             graphics.PreferredBackBufferWidth = 1920;
             graphics.PreferredBackBufferHeight = 1080;
             graphics.ApplyChanges();
+            Window.Title = "Zero Beat";
             
         }
 
@@ -54,24 +55,6 @@ namespace ZBPro
             base.Initialize();
 
             
-        }
-
-
-        //Defines what to do while the window is in focus
-        protected override void OnActivated(object sender, EventArgs args)
-        {
-            this.Window.Title = "Active Application";
-            base.OnActivated(sender, args);
-
-            
-        }
-
-
-        //Defines what to do if the window is clicked off of
-        protected override void OnDeactivated(object sender, EventArgs args)
-        {
-            this.Window.Title = "Inactive Application";
-            base.OnDeactivated(sender, args);
         }
 
 
