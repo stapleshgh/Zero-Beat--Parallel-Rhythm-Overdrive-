@@ -83,7 +83,7 @@ namespace ZBPro.States
 
         private void editButton_Click(object sender, EventArgs e)
         {
-            EditState edit = new EditState(_content, _game, _graphics);
+            EditState edit = new EditState(_content, _game, _graphics, "");
             _game.ChangeState(edit);
         }
 
