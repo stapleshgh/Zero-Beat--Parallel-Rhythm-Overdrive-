@@ -24,8 +24,8 @@ namespace ZBPro.States
 
             var editButton = new Button(buttonTexture, buttonFont)
             {
-                Position = new Vector2(_graphics.Viewport.Width / 2 - buttonTexture.Width / 2, (_graphics.Viewport.Height / 2) + 300),
-                Text = "Edit"
+                Position = new Vector2(_graphics.Viewport.Width / 2 - buttonTexture.Width / 2, (_graphics.Viewport.Height / 2) + 200),
+                Text = "Create Beatmap"
             };
 
             editButton.Click += editButton_Click;
@@ -34,7 +34,7 @@ namespace ZBPro.States
             {
                 //Defining position and text
                 Position = new Vector2(_graphics.Viewport.Width / 2 - buttonTexture.Width / 2, (_graphics.Viewport.Height / 2) + 100),
-                Text = "Start"
+                Text = "Play"
             };
 
 
@@ -52,7 +52,7 @@ namespace ZBPro.States
 
             var quitButton = new Button(buttonTexture, buttonFont)
             {
-                Position = new Vector2(_graphics.Viewport.Width / 2 - buttonTexture.Width / 2, (_graphics.Viewport.Height / 2) + 200),
+                Position = new Vector2(_graphics.Viewport.Width / 2 - buttonTexture.Width / 2, (_graphics.Viewport.Height / 2) + 300),
                 Text = "Exit"
             };
 
@@ -132,6 +132,11 @@ namespace ZBPro.States
             foreach (var component in _components)
                 component.Update(gameTime);
 
+
+            if (this != _game.CurrentState)
+            {
+                _content.Unload();
+            }
         }
 
 

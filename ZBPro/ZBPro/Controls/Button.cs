@@ -25,7 +25,11 @@ namespace ZBPro
 
         public event EventHandler Click;
 
+        public event EventHandler RightClick;
+
         public bool Clicked { get; private set; }
+
+        public bool RightClicked { get; private set; }
 
         public Color PenColor { get; set; }
 
@@ -71,6 +75,11 @@ namespace ZBPro
                 if (_currentMouse.LeftButton == ButtonState.Released && _prevMouse.LeftButton == ButtonState.Pressed)
                 {
                     Click?.Invoke(this, new EventArgs());
+                }
+
+                if (_currentMouse.RightButton == ButtonState.Released && _prevMouse.RightButton == ButtonState.Pressed)
+                {
+                    RightClick?.Invoke(this, new EventArgs());
                 }
             }
 

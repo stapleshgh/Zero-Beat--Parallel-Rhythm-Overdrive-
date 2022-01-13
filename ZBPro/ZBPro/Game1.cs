@@ -22,6 +22,14 @@ namespace ZBPro
 
         private State _nextState;
 
+        public State CurrentState 
+        {
+            get
+            {
+                return _currentState;
+            }
+        }
+
         public void ChangeState(State state)
         {
             _nextState = state;

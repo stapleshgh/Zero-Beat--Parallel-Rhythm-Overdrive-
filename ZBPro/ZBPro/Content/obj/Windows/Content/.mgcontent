@@ -6,6 +6,7 @@
   <SourceFiles>
     <File>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/background.png</File>
     <File>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Fonts/Font.spritefont</File>
+    <File>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Fonts/songFont.spritefont</File>
     <File>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/ball.png</File>
     <File>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/bullet1.png</File>
     <File>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/button.png</File>
@@ -13,14 +14,19 @@
     <File>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/DialogueBoxes/promptBox.png</File>
     <File>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/DialogueBoxes/scoreBox.png</File>
     <File>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/field.png</File>
+    <File>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/mapselectscreen.png</File>
     <File>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/menu_button.png</File>
     <File>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/noteTexture.png</File>
     <File>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/paused_text.png</File>
     <File>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/player.png</File>
     <File>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/sky.png</File>
+    <File>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/songTexture.png</File>
     <File>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/splashtext.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

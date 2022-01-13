@@ -178,3 +178,6 @@ C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPr
 C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\obj\Debug\netcoreapp3.1\ZBPro.csproj.AssemblyReference.cache
 C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\obj\Debug\netcoreapp3.1\ZBPro.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\DialogueBoxes\promptBox.xnb
+C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Fonts\songFont.xnb
+C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\mapselectscreen.xnb
+C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\songTexture.xnb
