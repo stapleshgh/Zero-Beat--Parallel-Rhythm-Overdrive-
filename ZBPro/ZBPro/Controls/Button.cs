@@ -14,7 +14,8 @@ namespace ZBPro
 
         private MouseState _currentMouse;
         private SpriteFont _font;
-        private bool _isHovering;
+        private Vector2 _position;
+        public bool _isHovering;
         private MouseState _prevMouse;
         private Texture2D _texture;
         
@@ -33,13 +34,23 @@ namespace ZBPro
 
         public Color PenColor { get; set; }
 
-        public Vector2 Position { get; set; }
+        public Vector2 Position
+        {
+            get
+            {
+                return _position;
+            }
+            set
+            {
+                _position = value;
+            }
+        }
 
         public Rectangle Rect
         {
             get
             {
-                return new Rectangle((int)Position.X, (int)Position.Y, _texture.Width, _texture.Height);
+                return new Rectangle((int)_position.X, (int)_position.Y, _texture.Width, _texture.Height);
             }
         }
 
@@ -93,7 +104,7 @@ namespace ZBPro
             var colour = Color.White;
 
             if (_isHovering)
-                colour = Color.Gray;
+                colour = Color.DarkGray;
 
             spriteBatch.Draw(_texture, Rect, colour);
 

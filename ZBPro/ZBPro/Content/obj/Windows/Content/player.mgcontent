@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/player.png</SourceFile>
+  <SourceFile>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/player.png</SourceFile>
   <SourceTime>2022-01-16T15:00:33.1771038-05:00</SourceTime>
-  <DestFile>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/bin/Windows/Content/Sprites/player.xnb</DestFile>
-  <DestTime>2022-01-16T15:02:42.241829-05:00</DestTime>
+  <DestFile>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/bin/Windows/Content/player.xnb</DestFile>
+  <DestTime>2022-01-16T15:06:16.660431-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

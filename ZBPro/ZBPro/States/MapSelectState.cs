@@ -25,12 +25,13 @@ namespace ZBPro.States
 
         //textures
         Texture2D bg;
+        Texture2D bgTop;
         Texture2D songTexture;
         SpriteFont songFont;
 
 
         //lists
-        List<Component> _components;
+        List<Button> _components;
         List<Component> _pausedComponents;
         List<string> _songs;
 
@@ -38,13 +39,14 @@ namespace ZBPro.States
         public MapSelectState(ContentManager content, Game1 game, GraphicsDevice graphicsDevice) : base(game, graphicsDevice, content)
         {
             //lists
-            _components = new List<Component>();
+            _components = new List<Button>();
 
 
 
 
             //textures
             bg = content.Load<Texture2D>("Sprites/mapselectscreen");
+            bgTop = content.Load<Texture2D>("Sprites/mapselectscreen_top");
             songTexture = content.Load<Texture2D>("Sprites/songTexture");
             songFont = content.Load<SpriteFont>("Fonts/songFont");
 
@@ -56,8 +58,9 @@ namespace ZBPro.States
             {
                 Button button = new Button(songTexture, songFont)
                 {
-                    Text = $"{song}",
-                    Position = new Vector2(_graphics.Viewport.Width / 2, 0)
+                    Text = $"{song.Remove(0, 88)}",
+                    Position = new Vector2(_graphics.Viewport.Width / 2, 500),
+                    PenColor = Color.White
                 };
                 _components.Add(button);
             }
@@ -67,6 +70,10 @@ namespace ZBPro.States
         {
             spriteBatch.Begin();
 
+            //background
+            spriteBatch.Draw(bg, new Vector2(0, 0), Color.White);
+
+
             //main loop
             if (!isPaused)
             {
@@ -74,8 +81,7 @@ namespace ZBPro.States
                     component.Draw(gameTime, spriteBatch);
             }
 
-            //background
-            spriteBatch.Draw(bg, new Vector2(0, 0), Color.White);
+            spriteBatch.Draw(bgTop, new Vector2(), Color.White);
             
             spriteBatch.End();
         }
@@ -89,8 +95,22 @@ namespace ZBPro.States
         {
             if (!isPaused)
             {
-                foreach (Component component in _components)
+                foreach (Button component in _components)
+                {
+                    float amount = 0.2f;
+                    float shift = 5;
                     component.Update(gameTime);
+                    if (component._isHovering)
+                    {
+                        amount = amount * amount; 
+                        shift += amount;
+
+                        component.Position = new Vector2(component.Position.X - shift, component.Position.Y);
+                    }
+                }
+                    
+
+
             }
 
 

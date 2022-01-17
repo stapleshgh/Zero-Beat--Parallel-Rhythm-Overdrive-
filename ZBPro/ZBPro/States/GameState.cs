@@ -3,6 +3,9 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using MonoGame.Extended.Content;
+using MonoGame.Extended.Serialization;
+using MonoGame.Extended.Sprites;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,100 +16,90 @@ namespace ZBPro.States
 {
     public class GameState : State
     {
-        #region Fields
-        private double frameShift;
-        private bool pauseCheck;
-        private Texture2D pausedTexture;
-        private Texture2D fieldTexture;
-        private Texture2D playerTexture;
-        public Player _player;
-        private KeyboardState state;
-        private KeyboardState prevState;
-        private bool isPaused;
-        public Image paused;
-        public Image field;
-        #endregion
+        //animations
 
-        private List<Component> _components;
-        private List<Note> _notes;
+        private AnimatedSprite _player;
+        private Vector2 _playerPosition;
+        Texture2D field;
+
+
 
 
         public GameState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content) : base(game, graphicsDevice, content)
         {
-            var scoreTexture = content.Load<Texture2D>("Sprites/DialogueBoxes/scoreBox");
-            var scoreFont = content.Load<SpriteFont>("Fonts/Font");
+            field = content.Load<Texture2D>("Sprites/field");
+
+            //player init
+            var spriteSheet = content.Load<SpriteSheet>("player.sf", new JsonContentLoader());
+            var sprite = new AnimatedSprite(spriteSheet);
+
+            
+            sprite.Play("idle");
+            _playerPosition = new Vector2(_graphics.Viewport.Width / 2, 1000);
+            _player = sprite;
             
 
-            isPaused = false;
-            playerTexture = content.Load<Texture2D>("Sprites/player");
-            pausedTexture = content.Load<Texture2D>("Sprites/paused_text");
-            fieldTexture = content.Load<Texture2D>("Sprites/field");
-            Player _player = new Player(playerTexture, 9000, new Vector2(fieldTexture.Width, 920));
-            paused = new Image(pausedTexture, new Vector2(0, 0), 0.75f);
-            field = new Image(fieldTexture, new Vector2(_graphics.Viewport.Width / 2 - fieldTexture.Width / 2 - playerTexture.Width / 2 + 10, _graphics.Viewport.Height / 2 - fieldTexture.Height / 2), 1.0f);
-
-            var score = new DialogueBox(scoreTexture, scoreFont, Color.Black)
-            {
-                Position = new Vector2(0, 0),
-                Text = "1000"
-            };
-
-            _components = new List<Component>()
-            {
-                field,
-                _player,
-                score
-            };
-        }
-
-
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
-        {
-            
-
-            spriteBatch.Begin();
-
-            foreach (var component in _components)
-                component.Draw(gameTime, spriteBatch);
-            
-
-            spriteBatch.End();
-        }
-
-        public override void PostUpdate(GameTime gameTime)
-        {
             
         }
 
         public override void Update(GameTime gameTime)
         {
-            
-            state = Keyboard.GetState();
+            var deltaSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            var walkSpeed = deltaSeconds * 512;
+            var keyboardState = Keyboard.GetState();
+            var animation = "idle";
 
-            #region pause check
-
-            if (state.IsKeyDown(Keys.Escape) && !prevState.IsKeyDown(Keys.Escape) && _components.Contains(paused) == false)
-                _components.Add(paused);
-
-            if (_components.Contains(paused))
-                if (state.IsKeyDown(Keys.Escape) && !prevState.IsKeyDown(Keys.Escape))
-                    _components.Remove(paused);
-
-
-            #endregion
-
-            foreach (var component in _components)
-                if (isPaused == false)
-                    component.Update(gameTime);
-
-
-            //check if this is the current state, if not then unload all content
-            if (this != _game.CurrentState)
+            //player animation
+            if (keyboardState.IsKeyDown(Keys.S) && _playerPosition.X - 64 > _graphics.Viewport.Width / 2 - field.Width / 2)
             {
-                _content.Unload();
+
+                if (keyboardState.IsKeyDown(Keys.LeftShift))
+                    _playerPosition.X -= walkSpeed * 2;
+                else if (keyboardState.IsKeyDown(Keys.LeftControl))
+                    _playerPosition.X -= walkSpeed * 4;
+                else
+                    _playerPosition.X -= walkSpeed;
+
+            }
+            else if (keyboardState.IsKeyDown(Keys.D) && _playerPosition.X + 64 < _graphics.Viewport.Width / 2 + field.Width / 2)
+            {
+                
+                if (keyboardState.IsKeyDown(Keys.LeftShift))
+                    _playerPosition.X += walkSpeed * 2;
+                else if (keyboardState.IsKeyDown(Keys.LeftControl))
+                    _playerPosition.X += walkSpeed * 4;
+                else
+                    _playerPosition.X += walkSpeed;
             }
 
-            prevState = state;
+            _player.Play(animation);
+
+            _player.Update(deltaSeconds);
+
+            //bounds checking
+
+            
+                
+
+        }
+
+        public override void PostUpdate(GameTime gameTime)
+        {
+
+        }
+
+
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        {
+
+
+            spriteBatch.Begin();
+
+            spriteBatch.Draw(field, new Vector2(_graphics.Viewport.Width / 2 - field.Width / 2, _graphics.Viewport.Height / 2 - field.Height / 2), Color.White);
+            spriteBatch.Draw(_player, _playerPosition);
+
+
+            spriteBatch.End();
         }
     }
 }
