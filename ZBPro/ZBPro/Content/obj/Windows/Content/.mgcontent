@@ -11,6 +11,7 @@
     <File>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/bullet1.png</File>
     <File>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/button.png</File>
     <File>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/continue_button.png</File>
+    <File>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/DialogueBoxes/dialog2.png</File>
     <File>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/DialogueBoxes/promptBox.png</File>
     <File>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/DialogueBoxes/scoreBox.png</File>
     <File>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/field.png</File>
@@ -25,6 +26,7 @@
     <File>C:/Users/James/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/splashtext.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

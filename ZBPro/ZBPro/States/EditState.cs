@@ -51,22 +51,26 @@ namespace ZBPro.States
 
             buttonTexture = content.Load<Texture2D>("Sprites/button");
             font = content.Load<SpriteFont>("Fonts/Font");
-            promptTexture = content.Load<Texture2D>("Sprites/DialogueBoxes/promptBox");
+            promptTexture = content.Load<Texture2D>("Sprites/DialogueBoxes/dialog2");
 
 
             // init all pause menu elements
+
             quitButton = new Button(buttonTexture, font)
             {
                 Text = "Quit",
                 Position = new Vector2(_graphics.Viewport.Width / 2 - buttonTexture.Width / 2, _graphics.Viewport.Height / 2 + 300)
             };
+
+
             quitButton.Click += quitButton_Click;
+
 
             pauseMenu = new DialogueBox(promptTexture, font, Color.White)
             {
-                Text = "Really quit? Hit [ESC] to return to what you were doing.",
                 Position = new Vector2(_graphics.Viewport.Width / 2 - promptTexture.Width / 2, _graphics.Viewport.Height / 2 - promptTexture.Height / 2)
             };
+            pauseMenu.text.Add("Really quit?", new Vector2(_graphics.Viewport.Width / 2, _graphics.Viewport.Height / 2));
 
 
 
@@ -87,9 +91,9 @@ namespace ZBPro.States
             {
                 DialogueBox prompt = new DialogueBox(promptTexture, font, Color.White)
                 {
-                    Text = "Create new beatmap?",
                     Position = new Vector2(_graphics.Viewport.Width / 2 - promptTexture.Width / 2, _graphics.Viewport.Height / 2 - promptTexture.Height / 2)
                 };
+                prompt.text.Add("Create new beatmap?", new Vector2(_graphics.Viewport.Width / 2, _graphics.Viewport.Height / 2));
                 _components.Add(prompt);
 
                 Button createNewBeatmap = new Button(buttonTexture, font)
@@ -110,15 +114,21 @@ namespace ZBPro.States
                 {
                     using (OpenFileDialog file = new OpenFileDialog())
                     {
+
                         file.DefaultExt = ".mp3";
                         file.Filter = "sound files (*.mp3)|*.mp3";
                         file.ShowDialog();
-                        string dir = @"C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\Songs\";
-                        string filename = file.SafeFileName;
-                        filename = filename.Remove(filename.Length - 3);
-                        Directory.CreateDirectory(dir + filename);
-                        Directory.SetCurrentDirectory(@"C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\Songs\");
-                        File.Copy(file.FileName, filename + @$"\{filename}.mp3");
+
+                        if (file.SafeFileName != "")
+                        {
+                            string dir = @"C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\Songs\";
+                            string filename = file.SafeFileName;
+                            filename = filename.Remove(filename.Length - 3);
+                            Directory.CreateDirectory(dir + filename);
+                            Directory.SetCurrentDirectory(@"C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\Songs\");
+                            File.Copy(file.FileName, filename + @$"\{filename}.mp3");
+                        }
+                        
                         
                     }
                     

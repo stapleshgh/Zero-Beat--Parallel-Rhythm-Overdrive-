@@ -8,21 +8,19 @@ namespace ZBPro.Elements
 {
     class DialogueBox : Component
     {
-        #region Fields
-
+        //fonts
         private SpriteFont _font;
         
+        //textures
         private Texture2D _texture;
-        #endregion
 
-
-        #region Properties
+        //lists
+        public Dictionary<string, Vector2> text;
+        
 
         public Vector2 Position { get; set; }
 
         public Color PenColour { get; set; }
-
-        public string Text { get; set; }
 
         public Rectangle rect
         {
@@ -32,7 +30,7 @@ namespace ZBPro.Elements
             }
         }
 
-        #endregion
+        
 
 
         public DialogueBox(Texture2D texture, SpriteFont font, Color penColour)
@@ -40,6 +38,7 @@ namespace ZBPro.Elements
             _texture = texture;
             _font = font;
             PenColour = penColour;
+            text = new Dictionary<string, Vector2>();
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
@@ -48,12 +47,12 @@ namespace ZBPro.Elements
 
             spriteBatch.Draw(_texture, rect, colour);
 
-            if (!string.IsNullOrEmpty(Text))
+            foreach (string str in text.Keys)
+            if (!string.IsNullOrEmpty(str))
             {
-                var x = Position.X + _texture.Width / 2 - (_font.MeasureString(Text).X / 2);
-                var y = Position.Y + _texture.Height / 2 - (_font.MeasureString(Text).Y / 2);
+                Vector2 _pos = new Vector2(text[str].X - _font.MeasureString(str).X / 2, text[str].Y - _font.MeasureString(str).Y / 2);
 
-                spriteBatch.DrawString(_font, Text, new Vector2(x, y), PenColour);
+                spriteBatch.DrawString(_font, str, _pos, PenColour);
             }
         }
 

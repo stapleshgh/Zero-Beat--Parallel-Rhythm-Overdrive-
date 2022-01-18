@@ -30,6 +30,14 @@ namespace ZBPro.States
 
             editButton.Click += editButton_Click;
 
+            var optionsButton = new Button(buttonTexture, buttonFont)
+            {
+                Position = new Vector2(0, _graphics.Viewport.Height - buttonTexture.Height),
+                Text = "Options"
+            };
+
+            optionsButton.Click += optionsButton_Click;
+
             var startButton = new Button(buttonTexture, buttonFont)
             {
                 //Defining position and text
@@ -75,10 +83,16 @@ namespace ZBPro.States
                 quitButton,
                 testButton,
                 editButton,
-                splashText
+                splashText,
+                optionsButton
             };
 
 
+        }
+
+        private void optionsButton_Click(object sender, EventArgs e)
+        {
+            
         }
 
         private void editButton_Click(object sender, EventArgs e)

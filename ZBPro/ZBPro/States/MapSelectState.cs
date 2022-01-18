@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -35,6 +36,11 @@ namespace ZBPro.States
         List<Component> _pausedComponents;
         List<string> _songs;
 
+
+        //input
+        MouseState mouse;
+        MouseState prevMouse;
+            
 
         public MapSelectState(ContentManager content, Game1 game, GraphicsDevice graphicsDevice) : base(game, graphicsDevice, content)
         {
@@ -100,12 +106,9 @@ namespace ZBPro.States
                     float amount = 0.2f;
                     float shift = 5;
                     component.Update(gameTime);
-                    if (component._isHovering)
+                    if (mouse.ScrollWheelValue > prevMouse.ScrollWheelValue)
                     {
-                        amount = amount * amount; 
-                        shift += amount;
-
-                        component.Position = new Vector2(component.Position.X - shift, component.Position.Y);
+                        
                     }
                 }
                     

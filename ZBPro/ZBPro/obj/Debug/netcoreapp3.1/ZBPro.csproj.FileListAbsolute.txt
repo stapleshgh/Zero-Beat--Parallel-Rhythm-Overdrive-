@@ -193,3 +193,4 @@ C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPr
 C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\player.xnb
 C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\player.xnb
 C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\player.sf
+C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\DialogueBoxes\dialog2.xnb

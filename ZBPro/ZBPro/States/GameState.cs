@@ -21,6 +21,7 @@ namespace ZBPro.States
         private AnimatedSprite _player;
         private Vector2 _playerPosition;
         Texture2D field;
+        private KeyboardState prevState;
 
 
 
@@ -35,7 +36,7 @@ namespace ZBPro.States
 
             
             sprite.Play("idle");
-            _playerPosition = new Vector2(_graphics.Viewport.Width / 2, 1000);
+            _playerPosition = new Vector2(_graphics.Viewport.Width / 2 + field.Width / 8, 1000);
             _player = sprite;
             
 
@@ -45,12 +46,12 @@ namespace ZBPro.States
         public override void Update(GameTime gameTime)
         {
             var deltaSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            var walkSpeed = deltaSeconds * 512;
+            var walkSpeed = field.Width / 4;
             var keyboardState = Keyboard.GetState();
             var animation = "idle";
 
             //player animation
-            if (keyboardState.IsKeyDown(Keys.S) && _playerPosition.X - 64 > _graphics.Viewport.Width / 2 - field.Width / 2)
+            if (keyboardState.IsKeyDown(Keys.A) && !prevState.IsKeyDown(Keys.A) && _playerPosition.X - 80 > _graphics.Viewport.Width / 2 - field.Width / 2)
             {
 
                 if (keyboardState.IsKeyDown(Keys.LeftShift))
@@ -61,7 +62,7 @@ namespace ZBPro.States
                     _playerPosition.X -= walkSpeed;
 
             }
-            else if (keyboardState.IsKeyDown(Keys.D) && _playerPosition.X + 64 < _graphics.Viewport.Width / 2 + field.Width / 2)
+            else if (keyboardState.IsKeyDown(Keys.D) && !prevState.IsKeyDown(Keys.D) && _playerPosition.X + 80 < _graphics.Viewport.Width / 2 + field.Width / 2)
             {
                 
                 if (keyboardState.IsKeyDown(Keys.LeftShift))
@@ -78,8 +79,8 @@ namespace ZBPro.States
 
             //bounds checking
 
-            
-                
+
+            prevState = keyboardState;
 
         }
 
