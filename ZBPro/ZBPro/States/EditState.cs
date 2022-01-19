@@ -9,7 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using ZBPro.Content;
 using ZBPro.Elements;
-
+using Microsoft.Xna.Framework.Media;
 
 namespace ZBPro.States
 {
@@ -38,11 +38,14 @@ namespace ZBPro.States
         string fileContent;
         string filePath;
         string targetFile;
+        string dir;
         private bool paused;
         private bool errorState;
 
         public EditState(ContentManager content, Game1 game, GraphicsDevice graphicsDevice, string name) : base(game, graphicsDevice, content)
         {
+            dir = @"C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\Songs\";
+
             errorState = false;
             paused = false;
             
@@ -51,7 +54,7 @@ namespace ZBPro.States
 
             buttonTexture = content.Load<Texture2D>("Sprites/button");
             font = content.Load<SpriteFont>("Fonts/Font");
-            promptTexture = content.Load<Texture2D>("Sprites/DialogueBoxes/dialog2");
+            promptTexture = content.Load<Texture2D>("Sprites/DialogueBoxes/promptBox");
 
 
             // init all pause menu elements
@@ -121,14 +124,25 @@ namespace ZBPro.States
 
                         if (file.SafeFileName != "")
                         {
-                            string dir = @"C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\Songs\";
+                            
                             string filename = file.SafeFileName;
-                            filename = filename.Remove(filename.Length - 3);
+                            filename = filename.Remove(filename.Length - 4);
+                            File.SetAttributes(file.FileName, FileAttributes.Normal);
                             Directory.CreateDirectory(dir + filename);
-                            Directory.SetCurrentDirectory(@"C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\Songs\");
-                            File.Copy(file.FileName, filename + @$"\{filename}.mp3");
+                            Directory.SetCurrentDirectory(dir + filename);
+                            File.Copy(file.FileName, dir + filename + @$"\{filename}.mp3");
+
+                            using (StreamWriter sw = File.CreateText(dir + filename + @"\info.txt"))
+                            {
+                                sw.WriteLine("");
+                            }
+
+                            EditState edit = new EditState(_content, _game, _graphics, filename);
+                            _game.ChangeState(edit);
                         }
+
                         
+
                         
                     }
                     
@@ -140,7 +154,22 @@ namespace ZBPro.States
             {
                 //if file is NOT null
 
+                if (Directory.Exists(dir + name))
+                {
+                    using (StreamReader sr = File.OpenText(dir + name + @"\info.txt"))
+                    {
+                        if (File.Exists(dir + name + name + ".mp3"))
+                        {
+                            Song song = content.Load<Song>($"{name}.mp3");
+                            MediaPlayer.Play(song);
+                        }
 
+                        while (!sr.EndOfStream)
+                        {
+
+                        }
+                    }
+                }
                 
                 
 

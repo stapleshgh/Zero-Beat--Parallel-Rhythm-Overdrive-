@@ -17,9 +17,9 @@ namespace ZBPro.Elements
         public Vector2 Position { get; set; }
         #endregion
 
-        public Note(Vector2 pos)
+        public Note(int lane, float timing)
         {
-            position = pos;
+            
         }
 
         public override void Update(GameTime gameTime)
@@ -29,6 +29,7 @@ namespace ZBPro.Elements
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
+            
             spriteBatch.Draw(texture, position, Color.White);
         }
     }

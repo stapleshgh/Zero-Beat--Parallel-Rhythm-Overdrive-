@@ -56,7 +56,7 @@ namespace ZBPro.States
             songTexture = content.Load<Texture2D>("Sprites/songTexture");
             songFont = content.Load<SpriteFont>("Fonts/songFont");
 
-            _songs = Directory.GetDirectories(@"C:\Users\James\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\Songs\").ToList();
+            _songs = Directory.GetDirectories(@"C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\Songs\").ToList();
 
 
             //generate buttons
@@ -65,7 +65,7 @@ namespace ZBPro.States
                 Button button = new Button(songTexture, songFont)
                 {
                     Text = $"{song.Remove(0, 88)}",
-                    Position = new Vector2(_graphics.Viewport.Width / 2, 500),
+                    Position = new Vector2(_graphics.Viewport.Width / 2, 500 + _components.Count * songTexture.Height),
                     PenColor = Color.White
                 };
                 _components.Add(button);

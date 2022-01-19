@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using ZBPro.Content;
+using ZBPro.Elements;
 
 namespace ZBPro.States
 {
@@ -92,7 +93,7 @@ namespace ZBPro.States
 
         private void optionsButton_Click(object sender, EventArgs e)
         {
-            
+            //var screen = new DialogueBox();
         }
 
         private void editButton_Click(object sender, EventArgs e)
