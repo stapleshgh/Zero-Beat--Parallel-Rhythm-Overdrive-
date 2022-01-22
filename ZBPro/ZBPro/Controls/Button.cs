@@ -14,7 +14,7 @@ namespace ZBPro
 
         private MouseState _currentMouse;
         private SpriteFont _font;
-        private Vector2 _position;
+        public Vector2 _position;
         public bool _isHovering;
         private MouseState _prevMouse;
         private Texture2D _texture;
@@ -106,12 +106,12 @@ namespace ZBPro
             if (_isHovering)
                 colour = Color.DarkGray;
 
-            spriteBatch.Draw(_texture, Rect, colour);
+            spriteBatch.Draw(_texture, _position, colour);
 
             if (!string.IsNullOrEmpty(Text))
             {
-                var x = Rect.X + (Rect.Width / 2) - (_font.MeasureString(Text).X / 2);
-                var y = Rect.Y + (Rect.Height / 2) - (_font.MeasureString(Text).Y / 2);
+                var x = _position.X + (Rect.Width / 2) - (_font.MeasureString(Text).X / 2);
+                var y = _position.Y + (Rect.Height / 2) - (_font.MeasureString(Text).Y / 2);
 
                 spriteBatch.DrawString(_font, Text, new Vector2(x, y), PenColor);
             }

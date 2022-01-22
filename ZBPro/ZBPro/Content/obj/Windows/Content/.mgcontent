@@ -6,6 +6,7 @@
   <SourceFiles>
     <File>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Fonts/Font.spritefont</File>
     <File>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Fonts/songFont.spritefont</File>
+    <File>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/MP3s/Undertale Ost - 087 - Hopes and Dreams.mp3</File>
     <File>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/player.png</File>
     <File>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/ball.png</File>
     <File>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/bullet1.png</File>
@@ -14,6 +15,7 @@
     <File>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/DialogueBoxes/promptBox.png</File>
     <File>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/DialogueBoxes/scoreBox.png</File>
     <File>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/field.png</File>
+    <File>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/hitsound.wav</File>
     <File>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/mapselectscreen.png</File>
     <File>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/mapselectscreen_top.png</File>
     <File>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/menu_button.png</File>
@@ -27,6 +29,8 @@
     <File>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/stop.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

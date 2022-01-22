@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/Sprites/hitsound.wav</SourceFile>
+  <SourceTime>2022-01-21T11:24:03.2882951-05:00</SourceTime>
+  <DestFile>C:/Users/howar/Documents/GitHub/Zero-Beat--Parallel-Rhythm-Overdrive-/ZBPro/ZBPro/Content/bin/Windows/Content/Sprites/hitsound.xnb</DestFile>
+  <DestTime>2022-01-21T11:26:13.3171238-05:00</DestTime>
+  <Importer>WavImporter</Importer>
+  <ImporterTime>2020-08-10T12:17:54-04:00</ImporterTime>
+  <Processor>SoundEffectProcessor</Processor>
+  <ProcessorTime>2020-08-10T12:17:54-04:00</ProcessorTime>
+  <Parameters>
+    <Key>Quality</Key>
+    <Value>Best</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

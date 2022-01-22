@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -8,23 +9,46 @@ namespace ZBPro.Elements
 {
     class Note : Component
     {
-        #region Fields
+        //generic types
+        private int _scrollSpeed;
+        private int lane;
+        private int timing;
+
+
+        //mg types
         private Vector2 position;
         private Texture2D texture;
-        #endregion
 
-        #region Properties
-        public Vector2 Position { get; set; }
-        #endregion
 
-        public Note(int lane, float timing)
+        //lists
+        private Dictionary<int, int> Lanes;
+        
+
+        //constructor
+        public Note(string line, int scrollSpeed, ContentManager content)
         {
+            Lanes = new Dictionary<int, int>
+            {
+                {1, 670 },
+                {2, 818 },
+                {3, 966 },
+                {4, 1114 }
+            };
+
+            string[] _line = line.Split(':');
+            lane = Convert.ToInt32(_line[1]);
+            timing = Convert.ToInt32(_line[2]);
+
+            position = new Vector2(Lanes[lane], timing);
             
+            texture = content.Load<Texture2D>("Sprites/noteTexture");
+            _scrollSpeed = scrollSpeed;
         }
 
         public override void Update(GameTime gameTime)
         {
             
+            position.Y += _scrollSpeed;
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)

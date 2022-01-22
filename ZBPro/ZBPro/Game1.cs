@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using ZBPro.States;
 using Microsoft.Xna.Framework.Media;
 using ZBPro.Content;
-
+using ZBPro.Elements;
 
 namespace ZBPro
 {
@@ -21,6 +21,10 @@ namespace ZBPro
         private State _currentState;
 
         private State _nextState;
+
+        Song test;
+
+
 
         public State CurrentState 
         {
@@ -45,11 +49,13 @@ namespace ZBPro
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             Window.AllowUserResizing = false;
-            graphics.IsFullScreen = true;
+            //graphics.IsFullScreen = true;
             graphics.PreferredBackBufferWidth = 1920;
             graphics.PreferredBackBufferHeight = 1080;
             graphics.ApplyChanges();
             Window.Title = "Zero Beat";
+
+            
             
         }
 
@@ -114,5 +120,7 @@ namespace ZBPro
             base.Draw(gameTime);
 
         }
+
+       
     }
 }

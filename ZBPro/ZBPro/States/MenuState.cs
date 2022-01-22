@@ -104,7 +104,7 @@ namespace ZBPro.States
 
         private void testButton_Click(object sender, EventArgs e)
         {
-            GameState testLevel = new GameState(_game, _graphics, _content);
+            GameState testLevel = new GameState(_content, _game, _graphics, "Hopes and Dreams");
             _game.ChangeState(testLevel);
             
         }

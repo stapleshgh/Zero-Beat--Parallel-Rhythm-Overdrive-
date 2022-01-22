@@ -212,3 +212,6 @@ C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPr
 C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\play.xnb
 C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\stop.xnb
+C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\MP3s\Undertale Ost - 087 - Hopes and Dreams.wma
+C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\MP3s\Undertale Ost - 087 - Hopes and Dreams.xnb
+C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\bin\Debug\netcoreapp3.1\Content\Sprites\hitsound.xnb

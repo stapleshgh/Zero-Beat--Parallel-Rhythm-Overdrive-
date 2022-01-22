@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ZBPro.Content;
 using ZBPro.Elements;
 using Microsoft.Xna.Framework.Media;
+using System.Linq;
 
 namespace ZBPro.States
 {
@@ -28,6 +29,7 @@ namespace ZBPro.States
         List<Component> _components;
         List<Component> _pausedComponents;
         List<Component> _errorComponents;
+        List<Note> _notes;
 
         //textures
         Texture2D buttonTexture;
@@ -39,6 +41,7 @@ namespace ZBPro.States
         string filePath;
         string targetFile;
         string dir;
+        int scrollSpeed;
         private bool paused;
         private bool errorState;
 
@@ -55,6 +58,7 @@ namespace ZBPro.States
             buttonTexture = content.Load<Texture2D>("Sprites/button");
             font = content.Load<SpriteFont>("Fonts/Font");
             promptTexture = content.Load<Texture2D>("Sprites/DialogueBoxes/promptBox");
+            _notes = new List<Note>();
 
 
             // init all pause menu elements
@@ -156,18 +160,31 @@ namespace ZBPro.States
 
                 if (Directory.Exists(dir + name))
                 {
-                    using (StreamReader sr = File.OpenText(dir + name + @"\info.txt"))
+                    using (StreamReader sr = new StreamReader(dir + @"\" + name + @"\info.txt"))
                     {
-                        if (File.Exists(dir + name + name + ".mp3"))
-                        {
-                            Song song = content.Load<Song>($"{name}.mp3");
-                            MediaPlayer.Play(song);
-                        }
-
+                        string line;
                         while (!sr.EndOfStream)
                         {
+                            line = sr.ReadLine();
+                            List<string> _line = Enumerable.ToList<string>(line.Split(':'));
+
+                            switch (_line[0])
+                            {
+                                case "ss":
+                                    if (scrollSpeed == 0)
+                                        scrollSpeed = Convert.ToInt32(_line[1]);
+                                    break;
+                                case "nn":
+                                    Note note = new Note(line, scrollSpeed, _content);
+                                    _notes.Add(note);
+
+                                    break;
+
+                            }
+
 
                         }
+
                     }
                 }
                 
@@ -205,10 +222,8 @@ namespace ZBPro.States
                 foreach (Component component in _pausedComponents)
                     component.Draw(gameTime, spriteBatch);
             }
-            else if (errorState)
-            {
-                
-            }
+            foreach (Note note in _notes)
+                note.Draw(gameTime, spriteBatch);
 
             spriteBatch.End();
         }
@@ -219,6 +234,8 @@ namespace ZBPro.States
         {
             state = Keyboard.GetState();
 
+            foreach (Note note in _notes)
+                note.Update(gameTime);
 
             //update loop
             if (paused)

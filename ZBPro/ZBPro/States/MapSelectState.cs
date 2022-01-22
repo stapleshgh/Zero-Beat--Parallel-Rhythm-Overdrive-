@@ -68,6 +68,20 @@ namespace ZBPro.States
                     Position = new Vector2(_graphics.Viewport.Width / 2, 500 + _components.Count * songTexture.Height),
                     PenColor = Color.White
                 };
+                button.RightClick += button_rclick;
+                button.Click += button_click;
+
+                void button_click (object sender, EventArgs e)
+                {
+                    GameState map = new GameState(_content, _game, _graphics, song);
+                    _game.ChangeState(map);
+                }
+
+                void button_rclick(object sender, EventArgs e)
+                {
+                    EditState edit = new EditState(_content, _game, _graphics, song);
+                    _game.ChangeState(edit);
+                }
                 _components.Add(button);
             }
         }
@@ -99,23 +113,26 @@ namespace ZBPro.States
 
         public override void Update(GameTime gameTime)
         {
+            mouse = Mouse.GetState();
             if (!isPaused)
             {
                 foreach (Button component in _components)
                 {
-                    float amount = 0.2f;
-                    float shift = 5;
+                    float shift = 50;
                     component.Update(gameTime);
                     if (mouse.ScrollWheelValue > prevMouse.ScrollWheelValue)
                     {
-                        
+                        component._position.Y += shift;
+                    } else if (mouse.ScrollWheelValue < prevMouse.ScrollWheelValue)
+                    {
+                        component._position.Y -= shift;
                     }
                 }
                     
 
 
             }
-
+            prevMouse = mouse;
 
         }
     }
