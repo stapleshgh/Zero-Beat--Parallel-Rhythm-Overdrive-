@@ -20,12 +20,13 @@ namespace ZBPro.States
     public class GameState : State
     {
         //animations
-
-        private AnimatedSprite _player;
-        private Vector2 _playerPosition;
+        Player _player;
 
         //textures
         Texture2D field;
+        Texture2D menuButton;
+        Texture2D scoreTexture;
+        SpriteFont menuFont;
 
 
         //states
@@ -42,22 +43,52 @@ namespace ZBPro.States
         private decimal currentTime;
         private int scrollSpeed;
         private int playerHealth;
+        private int playerLane;
+        private int score;
+        private bool prevHitState;
+        private bool paused;
+
+
+        //mg types
+        Button quitButton;
+        ScoreBox scoreBox;
 
 
         //lists
         List<Note> _notes;
+        List<Component> _components;
 
         public GameState(ContentManager content, Game1 game, GraphicsDevice graphicsDevice, string file) : base(game, graphicsDevice, content)
         {
-            dir = @"C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\Songs\";
-            field = content.Load<Texture2D>("Sprites/field");
-
+            //list init
             _notes = new List<Note>()
             {
 
             };
+            _components = new List<Component>();
 
 
+            _player = new Player(content, game, graphicsDevice);
+            dir = @"C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\Songs\";
+            playerHealth = 100;
+            score = 0;
+
+            //texture loading
+            field = content.Load<Texture2D>("Sprites/field");
+            menuButton = content.Load<Texture2D>("Sprites/menu_button");
+            menuFont = content.Load<SpriteFont>("Fonts/songFont");
+            scoreTexture = content.Load<Texture2D>("Sprites/DialogueBoxes/scoreBox");
+
+            //elements
+            scoreBox = new ScoreBox(scoreTexture, menuFont, Color.Black)
+            {
+                Position = new Vector2(),
+                _score = 0
+            };
+            _components.Add(scoreBox);
+
+           
+            
             //file read
             using (StreamReader sr = new StreamReader(dir + @"\" + file + @"\info.txt"))
             {
@@ -80,91 +111,103 @@ namespace ZBPro.States
                             break;
 
                     }
-                    
-                        
                 }
-
             }
 
 
-            //player init
-            var spriteSheet = content.Load<SpriteSheet>("player.sf", new JsonContentLoader());
-            var sprite = new AnimatedSprite(spriteSheet);
+            //menu init
 
-            
-            sprite.Play("idle");
-            _playerPosition = new Vector2(_graphics.Viewport.Width / 2 + field.Width / 8, 1000);
-            _player = sprite;
+            quitButton = new Button(menuButton, menuFont)
+            {
+                Position = new Vector2(_graphics.Viewport.Width / 2 - menuButton.Width / 2, 500),
+                Text = "Return to Menu",
+                PenColor = Color.White
+            };
+            quitButton.Click += quitButton_Click;
+
+            void quitButton_Click(object sender, EventArgs e)
+            {
+                MenuState menu = new MenuState(_content, _game, _graphics);
+                _game.ChangeState(menu);
+            }
 
 
             song = Song.FromUri(file, new Uri(dir + file + @"\" + file + ".mp3"));
-            hitsound = SoundEffect.FromFile((@"C:\Users\howar\Documents\GitHub\Zero-Beat--Parallel-Rhythm-Overdrive-\ZBPro\ZBPro\Content\Sprites\hitsound.wav"));
             MediaPlayer.Play(song);
-            
-
             
         }
 
         public override void Update(GameTime gameTime)
         {
-            var deltaSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            var walkSpeed = field.Width / 4;
-            var keyboardState = Keyboard.GetState();
-            var animation = "idle";
-
-
-
-
-            //player animation
-            if (keyboardState.IsKeyDown(Keys.A) && !prevState.IsKeyDown(Keys.A) && _playerPosition.X - 80 > _graphics.Viewport.Width / 2 - field.Width / 2)
-            {
-
-                if (keyboardState.IsKeyDown(Keys.LeftShift))
-                    _playerPosition.X -= walkSpeed * 2;
-                else if (keyboardState.IsKeyDown(Keys.LeftControl))
-                    _playerPosition.X -= walkSpeed * 4;
-                else
-                    _playerPosition.X -= walkSpeed;
-                hitsound.Play();
-            }
-            else if (keyboardState.IsKeyDown(Keys.D) && !prevState.IsKeyDown(Keys.D) && _playerPosition.X + 80 < _graphics.Viewport.Width / 2 + field.Width / 2)
+            KeyboardState keyboardState = Keyboard.GetState();
+            
+            //pause logic; if pause pressed, flip bool. If media is paused, play. If media is playing, pause it.
+            if (keyboardState.IsKeyDown(Keys.Escape) && !prevState.IsKeyDown(Keys.Escape))
             {
                 
-                if (keyboardState.IsKeyDown(Keys.LeftShift))
-                    _playerPosition.X += walkSpeed * 2;
-                else if (keyboardState.IsKeyDown(Keys.LeftControl))
-                    _playerPosition.X += walkSpeed * 4;
-                else
-                    _playerPosition.X += walkSpeed;
-                hitsound.Play();
-            }
-
-            _player.Play(animation);
-
-            _player.Update(deltaSeconds);
-
-
-            //note updating
-            if (_notes != null)
-            {
-                foreach (Note note in _notes)
+                paused = !paused;
+                if (MediaPlayer.State == MediaState.Paused)
                 {
-                    note.Update(gameTime);
+                    MediaPlayer.Resume();
+                } 
+                else if (MediaPlayer.State == MediaState.Playing)
+                {
+                    MediaPlayer.Pause();
+                }
+                    
+            }
+            scoreBox._score += 1;
+
+            //pause check
+            if (!paused)
+            {
+                _player.Update(gameTime);
+                //note updating
+                if (_notes != null)
+                {
+                    foreach (Note note in _notes)
+                    {
+                        note.Update(gameTime);
+
+                        if (note.Rect.Contains(_player.rect))
+                        {
+                            note.hit = true;
+                        }
+                        else if (note.Rect.Contains(_player.rect) == false)
+                        {
+                            note.hit = false;
+                        }
+
+                        if (note.hit == true && note.prevHit == false)
+                        {
+                            _player.damage.Play();
+                            playerHealth = playerHealth - 10;
+                        }
+
+                        note.prevHit = note.hit;
+                    }
                 }
 
+                if (_components.Contains(quitButton))
+                    _components.Remove(quitButton);
+                
             }
+            else if (paused)
+                if (!_components.Contains(quitButton))
+                    _components.Add(quitButton);
 
-            //collision checking
-
-
-
+            //state updating
             prevState = keyboardState;
             currentTime += 1 / 60;
+
+            foreach (Component component in _components)
+                component.Update(gameTime);
         }
 
         public override void PostUpdate(GameTime gameTime)
         {
-
+            if (playerHealth <= 0)
+                _game.Exit();
         }
 
 
@@ -175,16 +218,17 @@ namespace ZBPro.States
             spriteBatch.Begin();
 
             spriteBatch.Draw(field, new Vector2(_graphics.Viewport.Width / 2 - field.Width / 2, _graphics.Viewport.Height / 2 - field.Height / 2), Color.White);
-            spriteBatch.Draw(_player, _playerPosition);
+            _player.Draw(gameTime, spriteBatch);
 
             if (_notes != null)
             {
                 foreach (Note note in _notes)
                     note.Draw(gameTime, spriteBatch);
             }
+
+            foreach (Component component in _components)
+                component.Draw(gameTime, spriteBatch);
             
-
-
             spriteBatch.End();
         }
     }

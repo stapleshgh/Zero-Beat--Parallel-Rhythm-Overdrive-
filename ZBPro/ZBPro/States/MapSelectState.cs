@@ -73,7 +73,7 @@ namespace ZBPro.States
 
                 void button_click (object sender, EventArgs e)
                 {
-                    GameState map = new GameState(_content, _game, _graphics, song);
+                    GameState map = new GameState(_content, _game, _graphics, song.Remove(0, 88));
                     _game.ChangeState(map);
                 }
 

@@ -58,6 +58,12 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/ball.png
 
+#begin Sprites/bruh.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sprites/bruh.wav
+
 #begin Sprites/bullet1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -93,6 +99,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/continue_button.png
+
+#begin Sprites/damage.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sprites/damage.wav
 
 #begin Sprites/DialogueBoxes/promptBox.png
 /importer:TextureImporter

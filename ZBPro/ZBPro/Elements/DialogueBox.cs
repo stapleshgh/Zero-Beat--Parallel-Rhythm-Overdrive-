@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ZBPro.Elements
 {
-    class DialogueBox : Component
+    public class DialogueBox : Component
     {
         //fonts
         private SpriteFont _font;

@@ -13,6 +13,11 @@ namespace ZBPro.Elements
         private int _scrollSpeed;
         private int lane;
         private int timing;
+        private bool claimed;
+        public bool hit;
+        public bool prevHit;
+        public int value;
+        private bool points;
 
 
         //mg types
@@ -22,7 +27,17 @@ namespace ZBPro.Elements
 
         //lists
         private Dictionary<int, int> Lanes;
-        
+
+
+        //properties
+        public Rectangle Rect
+        {
+            get
+            {
+                return new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height);
+            }
+        }
+
 
         //constructor
         public Note(string line, int scrollSpeed, ContentManager content)
@@ -47,8 +62,10 @@ namespace ZBPro.Elements
 
         public override void Update(GameTime gameTime)
         {
-            
+            //movement
             position.Y += _scrollSpeed;
+            if (position.Y > 0 && position.Y % 5 == 0)
+                value += 50;
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
